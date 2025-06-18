@@ -1,0 +1,14 @@
+name: Run hello.py
+
+on:
+    schedule:
+        - cron: "* * 0 *"
+    workflow-dispatch:
+
+    jobs:
+        run-script:
+            runs-on: ubuntu-latest
+            steps:
+                - uses: actions/checkout@v3
+                - name: Run Python script
+                    run: python hello.py
