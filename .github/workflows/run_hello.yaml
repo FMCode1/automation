@@ -12,3 +12,25 @@ on:
                 - uses: actions/checkout@v3
                 - name: Run Python script
                     run: python hello.py
+=======
+name: Run Hello Script
+
+on:
+  schedule:
+    - cron: "* * * 0 *"  # Runs every hour
+  workflow_dispatch:    # Allows manual run from GitHub UI
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Python Script
+        run: python hello.py
